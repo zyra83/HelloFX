@@ -36,7 +36,8 @@ public class Lanceur extends Application {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		log.info(String.format("[Thread:%s] Je suis dans le main.%n", Thread.currentThread().getName()));
+		if (log.isInfoEnabled())
+			log.info(String.format("[Thread:%s] Je suis dans le main.%n", Thread.currentThread().getName()));
 		launch(args);
 	}
 
@@ -45,8 +46,11 @@ public class Lanceur extends Application {
 	 */
 	@Override
 	public void init() throws Exception {
-		log.info(String.format("[Thread:%s] Je suis dans le init.", Thread.currentThread().getName()));
-		log.info(String.format("passage par init, pour fermer ne pas utiliser System.exit, utiliser Platform.exit()."));
+		if (log.isInfoEnabled()) {
+			log.info(String.format("[Thread:%s] Je suis dans le init.", Thread.currentThread().getName()));
+			log.info(String
+					.format("passage par init, pour fermer ne pas utiliser System.exit, utiliser Platform.exit()."));
+		}
 		super.init();
 	}
 
@@ -55,7 +59,8 @@ public class Lanceur extends Application {
 	 */
 	@Override
 	public void stop() throws Exception {
-		log.info(String.format("passage par stop"));
+		if (log.isInfoEnabled())
+			log.info(String.format("passage par stop"));
 		super.stop();
 	}
 

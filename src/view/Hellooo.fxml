@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.collections.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+
+<VBox xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111">
+	<children>
+		<Label text="Choisir :" />
+		<ComboBox prefWidth="150.0">
+			<items>
+				<FXCollections fx:factory="observableArrayList">
+					<String fx:value="Apple" />
+					<String fx:value="Orange" />
+					<String fx:value="Pear" />
+				</FXCollections>
+			</items>
+		</ComboBox>
+	</children>
+</VBox>

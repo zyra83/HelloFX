@@ -1,7 +1,6 @@
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import lombok.extern.apachecommons.CommonsLog;
@@ -16,16 +15,22 @@ public class Lanceur extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 
-		VBox layout = new VBox();
-		Label lbl = new Label("Choisir");
-		ComboBox<String> cbo = new ComboBox<>();
-		cbo.getItems().addAll("Pico-bière", "Sky coc", "Perroquet");
+		/*
+		 * STATIQUE - charger le fichier XML qui contient la description de
+		 * l'interface graphique.
+		 */
+		VBox layout = FXMLLoader.load(this.getClass().getResource("/view/Hellooo.fxml"));
 
-		layout.getChildren().addAll(lbl, cbo);
+		/*
+		 * INSTANCIE - J'instancie le FXMLLoader dans le cas de figure ou j'ai
+		 * besoin de spécifier une classe controleur associée à la vue.
+		 */
+		// FXMLLoader loader = new FXMLLoader();
+		// loader.load(this.getClass().getResource("/view/Hellooo.fxml"));
 
 		Scene scene = new Scene(layout, 250, 100);
 		primaryStage.setScene(scene);
-		primaryStage.setTitle("Premier FX en programmatique");
+		primaryStage.setTitle("Premier FX en déclaratif");
 		primaryStage.setResizable(false);
 		primaryStage.show();
 	}
@@ -39,29 +44,6 @@ public class Lanceur extends Application {
 		if (log.isInfoEnabled())
 			log.info(String.format("[Thread:%s] Je suis dans le main.%n", Thread.currentThread().getName()));
 		launch(args);
-	}
-
-	/**
-	 * Initialiser des trucs, optionnel
-	 */
-	@Override
-	public void init() throws Exception {
-		if (log.isInfoEnabled()) {
-			log.info(String.format("[Thread:%s] Je suis dans le init.", Thread.currentThread().getName()));
-			log.info(String
-					.format("passage par init, pour fermer ne pas utiliser System.exit, utiliser Platform.exit()."));
-		}
-		super.init();
-	}
-
-	/**
-	 * Optionnel, fermer les connexions proprement
-	 */
-	@Override
-	public void stop() throws Exception {
-		if (log.isInfoEnabled())
-			log.info(String.format("passage par stop"));
-		super.stop();
 	}
 
 }

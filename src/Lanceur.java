@@ -1,33 +1,42 @@
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import lombok.extern.apachecommons.CommonsLog;
 
+@CommonsLog
 public class Lanceur extends Application {
 
 	/**
-	 * Override obligatoire
+	 * C'est cette méthode que lance FX pour démarrer le thread d'affichage. Par
+	 * contre, depuis le main, c'est la méthode launch qu'il faut appeller.
 	 */
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		System.out.println(primaryStage.getUserData());
-		primaryStage.setTitle("Titre");
-		BorderPane layout = new BorderPane();
-		Button btn = new Button("Click me !");
-		layout.setCenter(btn);
+
+		VBox layout = new VBox();
+		Label lbl = new Label("Choisir");
+		ComboBox<String> cbo = new ComboBox<>();
+		cbo.getItems().addAll("Pico-bière", "Sky coc", "Perroquet");
+
+		layout.getChildren().addAll(lbl, cbo);
+
 		Scene scene = new Scene(layout, 250, 100);
 		primaryStage.setScene(scene);
+		primaryStage.setTitle("Premier FX en programmatique");
+		primaryStage.setResizable(false);
 		primaryStage.show();
 	}
 
 	/**
-	 * Obligatoire pour lanceer l'appli
+	 * En Java SE, le main est le point d'entrée dans l'application.
 	 * 
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		System.out.printf("[%s] Je suis dans le main.%n", Thread.currentThread().getName());
+		log.info(String.format("[Thread:%s] Je suis dans le main.%n", Thread.currentThread().getName()));
 		launch(args);
 	}
 
@@ -36,8 +45,8 @@ public class Lanceur extends Application {
 	 */
 	@Override
 	public void init() throws Exception {
-		System.out.printf("[%s] Je suis dans le init.%n", Thread.currentThread().getName());
-		System.out.println("passage par init, pour fermer ne pas utiliser System.exit, utiliser Platform.exit().");
+		log.info(String.format("[Thread:%s] Je suis dans le init.", Thread.currentThread().getName()));
+		log.info(String.format("passage par init, pour fermer ne pas utiliser System.exit, utiliser Platform.exit()."));
 		super.init();
 	}
 
@@ -46,7 +55,7 @@ public class Lanceur extends Application {
 	 */
 	@Override
 	public void stop() throws Exception {
-		System.out.println("passage par stop");
+		log.info(String.format("passage par stop"));
 		super.stop();
 	}
 

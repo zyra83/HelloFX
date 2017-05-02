@@ -39,9 +39,9 @@ public class HelloooController {
 		 * l'interface graphique.
 		 */
 		try {
-			FXMLLoader loader = new FXMLLoader();
-			VBox vbx = (VBox) loader.load(this.getClass().getResource("/view/Recapitulatif.fxml"));
+			FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/view/Recapitulatif.fxml"));
 			loader.setController(new RecapitulatifController("TEST"));
+			VBox vbx = (VBox) loader.load();
 			
 			// je récpere une référence de la scene
 			Scene scene = maCombo.getScene();

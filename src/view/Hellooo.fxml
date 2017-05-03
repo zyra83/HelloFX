@@ -12,7 +12,7 @@
 <!-- on peut importer le controlleur ici sinon on aurait pu le faire depuis 
 	le Lanceur ici -->
 
-<VBox xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1"
+<VBox stylesheets="/view/resources/application.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1"
 	fx:controller="controller.HelloooController">
 	<children>
 		<Label text="Choisir :" />
